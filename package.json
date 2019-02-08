@@ -1,37 +1,22 @@
 {
-  "name": "git-hub-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jrquadros/git-hub-app-react.git"
-  },
-  "keywords": [
-    "react",
-    "git",
-    "github"
-  ],
-  "author": "jrquadros",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jrquadros/git-hub-app-react/issues"
-  },
-  "homepage": "https://github.com/jrquadros/git-hub-app-react#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.5",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "react-hot-loader": "^4.6.5",
-    "standard": "^12.0.1",
-    "standard-loader": "^6.0.1",
-    "webpack": "^4.29.3",
-    "webpack-dev-server": "^3.1.14",
-    "webpack-validator": "^3.0.1"
+    "react-hot-loader": "^3.0.0-beta.2",
+    "standard": "^11.0.1",
+    "standard-loader": "^4.0.0",
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5",
+    "webpack-validator": "^3.0.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

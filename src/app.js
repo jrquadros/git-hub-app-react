@@ -1,11 +1,15 @@
 'use strict'
 
-import React from 'react'
+import React, {Component} from 'react'
 
-const App = React.createClass({
-    render: function (){
-        return <div>App</div>
-    }
-})
+class App extends Component {
+  render () {
+    return (
+      <div>
+        Aplicação
+      </div>
+    )
+  }
+}
 
 export default App
