@@ -2,25 +2,14 @@
 
 import React, { Component } from 'react'
 import Search from './components/search'
+import UserInfo from './components/user-info'
 
 class App extends Component {
   render () {
     return (
       <div className='app'>
         <Search />
-        <div className='user-info'>
-          <img src='https://avatars1.githubusercontent.com/u/40250538?v=4' />
-          <h1 className='username'>
-            <a href='http://github.com/jrquadros'>jrquadros</a>
-          </h1>
-
-          <ul className='repos-info'>
-            <li>Repositórios: 4</li>
-            <li>Seguidires: 12</li>
-            <li>Seguindo: 12</li>
-          </ul>
-        </div>
-
+        <UserInfo />
         <div className='actions'>
           <button>Ver repositórios</button>
           <button>Ver favoritos</button>
