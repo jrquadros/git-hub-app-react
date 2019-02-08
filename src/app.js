@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import Search from './components/search'
 import UserInfo from './components/user-info'
+import Actions from './components/actions'
 
 class App extends Component {
   render () {
@@ -10,10 +11,7 @@ class App extends Component {
       <div className='app'>
         <Search />
         <UserInfo />
-        <div className='actions'>
-          <button>Ver repositórios</button>
-          <button>Ver favoritos</button>
-        </div>
+        <Actions />
 
         <ul className='repos'>
           <h2>Repositórios</h2>
