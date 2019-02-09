@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Search from './components/search'
 import UserInfo from './components/user-info'
 import Actions from './components/actions'
+import Repos from './components/repos'
 
 class App extends Component {
   render () {
@@ -12,18 +13,19 @@ class App extends Component {
         <Search />
         <UserInfo />
         <Actions />
+        <Repos className='repos'
+          title='Repositórios:'
+          repos={[{
+            name: 'Nome do repositório',
+            link: '#'
+          }]} />
 
-        <ul className='repos'>
-          <h2>Repositórios</h2>
-          <li><a href=''>Nome do repositório</a></li>
-          <li><a href=''>Nome do repositório</a></li>
-        </ul>
-
-        <ul className='starred'>
-          <h2>Favoritos</h2>
-          <li><a href=''>Nome do repositório</a></li>
-          <li><a href=''>Nome do repositório</a></li>
-        </ul>
+        <Repos className='starred'
+          title='Favoritos'
+          repos={[{
+            name: 'Nome do repositório',
+            link: '#'
+          }]} />
       </div>
     )
   }
