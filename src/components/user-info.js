@@ -25,8 +25,8 @@ UserInfo.propTypes = {
     avatar: PropTypes.string.isRequired,
     login: PropTypes.string.isRequired,
     repos: PropTypes.number.isRequired,
-    fallowers: PropTypes.number.isRequired,
-    fallowing: PropTypes.number.isRequired
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired
   })
 }
 
