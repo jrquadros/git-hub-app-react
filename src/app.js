@@ -44,8 +44,8 @@ class App extends Component {
     console.log('KeyCode:', keyCode)
   }
 
-  showRepos (func) {
-    fetch(`https://api.github.com/users/${this.state.userinfo.login}/${func}`, {
+  showRepos () {
+    fetch(`https://api.github.com/users/${this.state.userinfo.login}/repos`, {
       method: 'get'
     })
       .then((response) => {
@@ -58,13 +58,28 @@ class App extends Component {
       })
   }
 
+  showStarred () {
+    fetch(`https://api.github.com/users/${this.state.userinfo.login}/starred`, {
+      method: 'get'
+    })
+    .then((response) => {
+      response.json()
+      .then((result) =>{
+        this.setState({
+          starred: result
+        })
+      })
+    })
+  }
+
   render () {
     return <AppContent
       userinfo={this.state.userinfo}
       repos={this.state.repos}
       starred={this.state.starred}
       handleSearch={(e) => { this.handleSearch(e) }}
-      showRepos={() => { this.showRepos() }} />
+      showRepos={() => { this.showRepos() }}
+      showStarred={() => { this.showStarred() }} />
   }
 }
 
