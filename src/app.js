@@ -44,12 +44,27 @@ class App extends Component {
     console.log('KeyCode:', keyCode)
   }
 
+  showRepos (func) {
+    fetch(`https://api.github.com/users/${this.state.userinfo.login}/${func}`, {
+      method: 'get'
+    })
+      .then((response) => {
+        response.json()
+          .then((result) => {
+            this.setState({
+              repos: result
+            })
+          })
+      })
+  }
+
   render () {
     return <AppContent
       userinfo={this.state.userinfo}
       repos={this.state.repos}
       starred={this.state.starred}
-      handleSearch={(e) => { this.handleSearch(e) }} />
+      handleSearch={(e) => { this.handleSearch(e) }}
+      showRepos={() => { this.showRepos() }} />
   }
 }
 
