@@ -62,14 +62,14 @@ class App extends Component {
     fetch(`https://api.github.com/users/${this.state.userinfo.login}/starred`, {
       method: 'get'
     })
-    .then((response) => {
-      response.json()
-      .then((result) =>{
-        this.setState({
-          starred: result
-        })
+      .then((response) => {
+        response.json()
+          .then((result) => {
+            this.setState({
+              starred: result
+            })
+          })
       })
-    })
   }
 
   render () {
