@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       userinfo: null,
       repos: [],
-      starred: []
+      starred: [],
+      isFetching: false
     }
   }
 
@@ -26,6 +27,9 @@ class App extends Component {
     const ENTER = 13
 
     if (keyCode === ENTER) {
+      this.setState({
+        isFetching: true
+      })
       fetch(this.getGitHubApi(value), {
         method: 'get'
       })
@@ -45,9 +49,13 @@ class App extends Component {
                 starred: []
               })
             })
+            .finally(() => {
+              this.setState({
+                isFetching: false
+              })
+            })
         })
     }
-    console.log('KeyCode:', keyCode)
   }
 
   showRepos (type) {
@@ -75,6 +83,7 @@ class App extends Component {
       userinfo={this.state.userinfo}
       repos={this.state.repos}
       starred={this.state.starred}
+      isFetching={this.state.isFetching}
       handleSearch={(e) => { this.handleSearch(e) }}
       showRepos={this.showRepos('repos')}
       showStarred={this.showRepos('starred')} />
