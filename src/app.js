@@ -14,13 +14,19 @@ class App extends Component {
     }
   }
 
+  getGitHubApi (username, type) {
+    const internalUser = username ? `/${username}` : ''
+    const internalType = type ? `/${type}` : ''
+    return `https://api.github.com/users${internalUser}${internalType}`
+  }
+
   handleSearch (e) {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
 
     if (keyCode === ENTER) {
-      fetch(`https://api.github.com/users/${value}`, {
+      fetch(this.getGitHubApi(value), {
         method: 'get'
       })
         .then((response) => {
@@ -34,42 +40,34 @@ class App extends Component {
                   repos: result.public_repos,
                   followers: result.followers,
                   following: result.following
-                }
+                },
+                repos: [],
+                starred: []
               })
-              console.log(result)
-              console.log(result.login)
             })
         })
     }
     console.log('KeyCode:', keyCode)
   }
 
-  showRepos () {
-    fetch(`https://api.github.com/users/${this.state.userinfo.login}/repos`, {
-      method: 'get'
-    })
-      .then((response) => {
-        response.json()
-          .then((result) => {
-            this.setState({
-              repos: result
+  showRepos (type) {
+    return (e) => {
+      const username = this.state.userinfo.login
+      fetch(this.getGitHubApi(username, type))
+        .then((response) => {
+          response.json()
+            .then((result) => {
+              this.setState({
+                [type]: result.map((repo) => {
+                  return {
+                    name: repo.name,
+                    link: repo.html_url
+                  }
+                })
+              })
             })
-          })
-      })
-  }
-
-  showStarred () {
-    fetch(`https://api.github.com/users/${this.state.userinfo.login}/starred`, {
-      method: 'get'
-    })
-      .then((response) => {
-        response.json()
-          .then((result) => {
-            this.setState({
-              starred: result
-            })
-          })
-      })
+        })
+    }
   }
 
   render () {
@@ -78,8 +76,8 @@ class App extends Component {
       repos={this.state.repos}
       starred={this.state.starred}
       handleSearch={(e) => { this.handleSearch(e) }}
-      showRepos={() => { this.showRepos() }}
-      showStarred={() => { this.showStarred() }} />
+      showRepos={this.showRepos('repos')}
+      showStarred={this.showRepos('starred')} />
   }
 }
 

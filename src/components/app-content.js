@@ -6,7 +6,14 @@ import UserInfo from './user-info'
 import Actions from './actions'
 import Repos from './repos'
 
-const AppContent = ({ userinfo, repos, starred, handleSearch, showRepos, showStarred }) => (
+const AppContent = ({
+  userinfo,
+  repos,
+  starred,
+  handleSearch,
+  showRepos,
+  showStarred
+}) => (
   <div className='app'>
     <Search handleSearch={handleSearch} />
     {!!userinfo && <UserInfo userinfo={userinfo} />}
